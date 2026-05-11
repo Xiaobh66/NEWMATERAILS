@@ -78,12 +78,17 @@ export function createArticle(input: ArticleInput): Article {
     input.title, input.summary, input.source, input.sourceUrl,
     input.category, input.tags, input.editorNote, input.publishedAt, input.status
   )
-  return getArticleById(result.lastInsertRowid as number)!
+  const article = getArticleById(result.lastInsertRowid as number)
+  if (!article) throw new Error('Failed to create article')
+  return article
 }
 
 export function updateArticle(id: number, input: Partial<ArticleInput>): Article | undefined {
   const db = getDb()
-  const fields = Object.keys(input).filter(k => input[k as keyof ArticleInput] !== undefined)
+  const VALID_COLUMNS = ['title', 'summary', 'source', 'sourceUrl', 'category', 'tags', 'editorNote', 'publishedAt', 'status'] as const
+  const fields = Object.keys(input).filter(
+    (k): k is keyof ArticleInput => VALID_COLUMNS.includes(k as keyof ArticleInput) && input[k as keyof ArticleInput] !== undefined
+  )
   if (fields.length === 0) return getArticleById(id)
 
   const setClause = fields.map(f => `${f} = ?`).join(', ')

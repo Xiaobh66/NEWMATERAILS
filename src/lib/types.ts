@@ -16,8 +16,8 @@ export interface Article {
 export type ArticleInput = Omit<Article, 'id' | 'createdAt' | 'updatedAt'>
 
 export interface ArticleFilters {
-  category?: string
-  status?: string
+  category?: 'daily' | 'company' | 'policy'
+  status?: 'draft' | 'pending' | 'published'
   search?: string
   date?: string
 }
