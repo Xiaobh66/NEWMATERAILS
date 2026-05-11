@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import SearchBar from './SearchBar'
 import CategoryFilter from './CategoryFilter'
+import ThemeToggle from './ThemeToggle'
 
 interface HeaderProps {
   activeCategory: string
@@ -27,6 +28,7 @@ export default function Header({ activeCategory, onCategoryChange, onSearch }: H
             <Link href="/admin" className="text-sm text-gray-500 hover:text-primary-600">
               管理
             </Link>
+            <ThemeToggle />
             <SearchBar onSearch={onSearch} />
           </div>
         </div>
