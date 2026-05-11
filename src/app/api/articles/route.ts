@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     date: searchParams.get('date') || undefined,
   }
 
-  const articles = getArticles(filters)
+  const articles = await getArticles(filters)
   return NextResponse.json(articles)
 }
 
@@ -29,6 +29,6 @@ export async function POST(request: NextRequest) {
     status: body.status || 'pending',
   }
 
-  const article = createArticle(input)
+  const article = await createArticle(input)
   return NextResponse.json(article, { status: 201 })
 }

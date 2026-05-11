@@ -70,9 +70,13 @@ const sampleArticles: ArticleInput[] = [
   },
 ]
 
-console.log('Seeding database...')
-for (const article of sampleArticles) {
-  createArticle(article)
-  console.log(`Created: ${article.title}`)
+async function main() {
+  console.log('Seeding database...')
+  for (const article of sampleArticles) {
+    await createArticle(article)
+    console.log(`Created: ${article.title}`)
+  }
+  console.log('Done!')
 }
-console.log('Done!')
+
+main()

@@ -18,6 +18,8 @@
 .DS_Store
 *.pem
 *.db
+*.db-shm
+*.db-wal
 
 # debug
 npm-debug.log*
