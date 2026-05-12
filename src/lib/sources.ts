@@ -35,23 +35,13 @@ export const sources: ScrapeSource[] = [
     defaultCategory: 'daily',
     aiContext: '36氪科技财经媒体，筛选与新材料、新能源、半导体、碳纤维、锂电池、稀土、固态电池相关的内容。与新材料无关的文章跳过（如娱乐、纯金融等）。',
   },
-  // === 以下源待验证后启用 ===
-  // {
-  //   id: 'ggbond',
-  //   name: '高工锂电',
-  //   type: 'rss',
-  //   enabled: false,
-  //   feedUrl: 'https://rsshub.app/ggbond/news',
-  //   defaultCategory: 'company',
-  //   aiContext: '高工锂电是锂电池行业权威媒体',
-  // },
-  // {
-  //   id: 'icviews',
-  //   name: '半导体行业观察',
-  //   type: 'rss',
-  //   enabled: false,
-  //   feedUrl: 'https://rsshub.app/icviews/news',
-  //   defaultCategory: 'company',
-  //   aiContext: '半导体行业观察，涵盖半导体材料产业链',
-  // },
+  {
+    id: 'ithome',
+    name: 'IT之家',
+    type: 'rss',
+    enabled: true,
+    feedUrl: 'https://www.ithome.com/rss/',
+    defaultCategory: 'daily',
+    aiContext: 'IT之家科技媒体，筛选与新材料、半导体材料、新能源材料、碳纤维、锂电池、稀土、光伏材料相关的内容。与新材料无关的文章跳过。',
+  },
 ]
