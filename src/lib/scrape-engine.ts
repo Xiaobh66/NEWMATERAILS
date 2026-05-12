@@ -63,6 +63,12 @@ export async function runScrape(): Promise<{ results: ScrapeResult[] }> {
 
           const aiResult = await analyzeArticle(article, source.aiContext)
 
+          // 跳过与新材料无关的文章（AI返回空标签）
+          if (!aiResult.tags || aiResult.tags.length === 0) {
+            result.duplicates++
+            continue
+          }
+
           const input: ArticleInput = {
             title: aiResult.title,
             summary: aiResult.summary,
