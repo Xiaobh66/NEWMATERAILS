@@ -73,6 +73,12 @@ export async function getArticleById(id: number): Promise<Article | undefined> {
   return result.rows[0] as unknown as Article | undefined
 }
 
+export async function findArticleByUrl(url: string): Promise<Article | undefined> {
+  const c = await ensureInitialized()
+  const result = await c.execute({ sql: 'SELECT * FROM articles WHERE sourceUrl = ? LIMIT 1', args: [url] })
+  return result.rows[0] as unknown as Article | undefined
+}
+
 export async function createArticle(input: ArticleInput): Promise<Article> {
   const c = await ensureInitialized()
   const result = await c.execute({
